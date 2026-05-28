@@ -13,6 +13,13 @@ class Settings(BaseSettings):
     debug: bool = False
     api_prefix: str = "/api/v1"
 
+    database_url: str = (
+        "postgresql+asyncpg://postgres:postgres@localhost:5432/creator_growth"
+    )
+    database_pool_size: int = 10
+    database_max_overflow: int = 20
+    database_echo: bool = False
+
     model_config = SettingsConfigDict(
         env_file=str(ROOT_DIR / ".env"),
         env_file_encoding="utf-8",
